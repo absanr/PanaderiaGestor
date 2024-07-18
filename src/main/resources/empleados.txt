@@ -1,0 +1,6 @@
+1,Juan Perez,Vendedor,1500.0
+2,Maria Lopez,Cajero,1600.0
+3,Carlos Sanchez,Administrador,2000.0
+4,Ana Garcia,Repostera,1800.0
+5,Jose Martinez,Limpieza,1400.0
+6,Empleado 6,Limpieza,1500.0

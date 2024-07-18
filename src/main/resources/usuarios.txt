@@ -1,0 +1,4 @@
+manager,manager123,MANAGER
+admin,admin123,ADMIN
+employee,employee123,EMPLOYEE
+user,user123,USER

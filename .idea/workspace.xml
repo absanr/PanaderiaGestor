@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba4ea91f-934e-415e-ad8d-1740366520b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Empleado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Turno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Zona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorAsistencia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorTurnos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorZonas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/IdGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ConfiguracionInicial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionEmpleados.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionZonas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ReporteGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/asistencia.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/empleados.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/turnos.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/usuarios.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2jOvr1YWhEPm9J86H5SEQCzTzfX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MenuPrincipal.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "D:/REPOSITORIO UNI UTP/Taller_de_Programacion/git/proyecto/PanaderiaGestor/src/main/java/com/panaderia/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\REPOSITORIO UNI UTP\Taller_de_Programacion\git\proyecto\PanaderiaGestor\src\main\resources" />
+      <recent name="D:\REPOSITORIO UNI UTP\Taller_de_Programacion\git\proyecto\PanaderiaGestor\src\main\resources\database" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba4ea91f-934e-415e-ad8d-1740366520b6" name="Changes" comment="" />
+      <created>1721271133108</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721271133108</updated>
+    </task>
+    <servers />
+  </component>
+</project>

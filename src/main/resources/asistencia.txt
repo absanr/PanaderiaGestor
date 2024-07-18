@@ -1,0 +1,9 @@
+1,2024-07-12,tarde
+1,2024-07-02,Presente
+1,2024-07-01,Presente
+2,2024-07-02,Presente
+2,2024-07-01,Ausente
+3,2024-07-02,Presente
+3,2024-07-01,Tarde
+4,2024-07-02,Ausente
+5,2024-07-02,Presente
