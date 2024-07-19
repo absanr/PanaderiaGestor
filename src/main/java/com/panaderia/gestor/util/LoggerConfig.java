@@ -2,6 +2,7 @@ package com.panaderia.gestor.util;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -12,8 +13,14 @@ public class LoggerConfig {
 
     static {
         try {
-            // Remove default console handler
+            // Remove default console handlers
             Logger rootLogger = Logger.getLogger("");
+            Handler[] handlers = rootLogger.getHandlers();
+            for (Handler handler : handlers) {
+                if (handler.getClass().getName().contains("ConsoleHandler")) {
+                    rootLogger.removeHandler(handler);
+                }
+            }
             rootLogger.setLevel(Level.OFF);
 
             // Setup file handler
