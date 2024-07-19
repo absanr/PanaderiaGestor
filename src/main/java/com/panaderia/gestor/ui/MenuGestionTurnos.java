@@ -1,14 +1,12 @@
 package com.panaderia.gestor.ui;
 
-import com.panaderia.gestor.model.Empleado;
 import com.panaderia.gestor.model.Turno;
+import com.panaderia.gestor.service.DataLoader;
 import com.panaderia.gestor.service.GestorTurnos;
 import com.panaderia.gestor.service.IdGenerator;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
@@ -22,7 +20,7 @@ public class MenuGestionTurnos {
             System.out.println("--------------------------------------------------------");
             System.out.println("GESTIÓN DE TURNOS");
             System.out.println("--------------------------------------------------------");
-            System.out.println("1. Asignar Turno");
+            System.out.println("1. Crear Turno");
             System.out.println("2. Ver Turnos");
             System.out.println("3. Actualizar Turno");
             System.out.println("4. Eliminar Turno");
@@ -35,7 +33,7 @@ public class MenuGestionTurnos {
                 scanner.nextLine(); // Consumir la nueva línea
                 switch (opcion) {
                     case 1:
-                        asignarTurno(gestorTurnos, scanner);
+                        crearTurno(gestorTurnos, scanner);
                         break;
                     case 2:
                         verTurnos(gestorTurnos);
@@ -59,50 +57,26 @@ public class MenuGestionTurnos {
         }
     }
 
-    private static void asignarTurno(GestorTurnos gestorTurnos, Scanner scanner) {
+    private static void crearTurno(GestorTurnos gestorTurnos, Scanner scanner) {
         try {
             int id = IdGenerator.obtenerSiguienteId("turnos.txt");
-            System.out.println("Lista de Empleados:");
-            mostrarListaEmpleados(gestorTurnos);
-
-            System.out.print("Seleccione el ID del empleado: ");
+            System.out.print("Ingrese el ID del empleado: ");
             int empleadoId = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea
+            System.out.print("Ingrese la fecha y hora de inicio del turno (yyyy-MM-ddTHH:mm): ");
+            String inicio = scanner.nextLine();
+            System.out.print("Ingrese la fecha y hora de fin del turno (yyyy-MM-ddTHH:mm): ");
+            String fin = scanner.nextLine();
+            System.out.print("Ingrese el horario (mañana/tarde): ");
+            String horario = scanner.nextLine();
 
-            Empleado empleado = gestorTurnos.getEmpleadoPorId(empleadoId);
-            if (empleado != null) {
-                LocalDateTime inicio = ingresarFechaYHora(scanner, "inicio");
-                LocalDateTime fin = ingresarFechaYHora(scanner, "fin");
-
-                Turno turno = new Turno(id, empleado, inicio, fin);
-                gestorTurnos.agregarTurno(turno);
-                System.out.println("Turno asignado correctamente.");
-            } else {
-                System.out.println("Empleado no encontrado.");
-            }
+            Turno turno = new Turno(id, gestorTurnos.getEmpleadoPorId(empleadoId), LocalDateTime.parse(inicio), LocalDateTime.parse(fin), horario);
+            gestorTurnos.getTurnos().put(id, turno);
+            DataLoader.guardarTurnos(gestorTurnos.getTurnos());
+            System.out.println("Turno creado correctamente.");
         } catch (IOException e) {
-            System.out.println("Error al asignar el turno: " + e.getMessage());
+            System.out.println("Error al crear el turno: " + e.getMessage());
         }
-    }
-
-    private static LocalDateTime ingresarFechaYHora(Scanner scanner, String tipo) {
-        System.out.println("Ingrese la fecha y hora de " + tipo + " del turno:");
-
-        System.out.print("Año (YYYY): ");
-        int anio = scanner.nextInt();
-        System.out.print("Mes (MM): ");
-        int mes = scanner.nextInt();
-        System.out.print("Día (DD): ");
-        int dia = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea
-
-        System.out.print("Hora (HH): ");
-        int hora = scanner.nextInt();
-        System.out.print("Minuto (MM): ");
-        int minuto = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea
-
-        return LocalDateTime.of(LocalDate.of(anio, mes, dia), LocalTime.of(hora, minuto));
     }
 
     private static void verTurnos(GestorTurnos gestorTurnos) {
@@ -110,73 +84,63 @@ public class MenuGestionTurnos {
         System.out.println("LISTA DE TURNOS");
         System.out.println("--------------------------------------------------------");
 
-        Map<Integer, Turno> turnos = gestorTurnos.obtenerTodosLosTurnos();
-        String format = "| %-4s | %-20s | %-20s | %-20s |%n";
-        System.out.format("+------+----------------------+----------------------+----------------------+%n");
-        System.out.format("| ID   | Empleado             | Inicio               | Fin                  |%n");
-        System.out.format("+------+----------------------+----------------------+----------------------+%n");
+        Map<Integer, Turno> turnos = gestorTurnos.getTurnos();
+        String format = "| %-4s | %-20s | %-20s | %-20s | %-10s |%n";
+        System.out.format("+------+----------------------+----------------------+----------------------+------------+%n");
+        System.out.format("| ID   | Empleado             | Inicio               | Fin                  | Horario    |%n");
+        System.out.format("+------+----------------------+----------------------+----------------------+------------+%n");
 
         for (Turno turno : turnos.values()) {
-            System.out.format(format, turno.getId(), turno.getEmpleado().getNombre(), turno.getInicio(), turno.getFin());
+            System.out.format(format, turno.getId(), turno.getEmpleado().getNombre(), turno.getInicio(), turno.getFin(), turno.getHorario());
         }
 
-        System.out.format("+------+----------------------+----------------------+----------------------+%n");
+        System.out.format("+------+----------------------+----------------------+----------------------+------------+%n");
     }
 
     private static void actualizarTurno(GestorTurnos gestorTurnos, Scanner scanner) {
-        try {
-            verTurnos(gestorTurnos);
-            System.out.print("Seleccione el ID del turno a actualizar: ");
-            int id = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+        System.out.print("Ingrese el ID del turno a actualizar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consumir la nueva línea
 
-            Turno turno = gestorTurnos.obtenerTurnoPorId(id);
-            if (turno != null) {
-                LocalDateTime inicio = ingresarFechaYHora(scanner, "nuevo inicio");
-                LocalDateTime fin = ingresarFechaYHora(scanner, "nuevo fin");
+        Turno turno = gestorTurnos.getTurnoPorId(id);
+        if (turno != null) {
+            System.out.print("Ingrese la nueva fecha y hora de inicio del turno (yyyy-MM-ddTHH:mm): ");
+            String inicio = scanner.nextLine();
+            System.out.print("Ingrese la nueva fecha y hora de fin del turno (yyyy-MM-ddTHH:mm): ");
+            String fin = scanner.nextLine();
+            System.out.print("Ingrese el nuevo horario (mañana/tarde): ");
+            String horario = scanner.nextLine();
 
-                turno.setInicio(inicio);
-                turno.setFin(fin);
-                gestorTurnos.actualizarTurno(turno);
+            turno.setInicio(LocalDateTime.parse(inicio));
+            turno.setFin(LocalDateTime.parse(fin));
+            turno.setHorario(horario);
+            try {
+                DataLoader.guardarTurnos(gestorTurnos.getTurnos());
                 System.out.println("Turno actualizado correctamente.");
-            } else {
-                System.out.println("Turno no encontrado.");
+            } catch (IOException e) {
+                System.out.println("Error al actualizar el turno: " + e.getMessage());
             }
-        } catch (IOException e) {
-            System.out.println("Error al actualizar el turno: " + e.getMessage());
+        } else {
+            System.out.println("Turno no encontrado.");
         }
     }
 
     private static void eliminarTurno(GestorTurnos gestorTurnos, Scanner scanner) {
-        try {
-            verTurnos(gestorTurnos);
-            System.out.print("Seleccione el ID del turno a eliminar: ");
-            int id = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+        System.out.print("Ingrese el ID del turno a eliminar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consumir la nueva línea
 
-            Turno turno = gestorTurnos.obtenerTurnoPorId(id);
-            if (turno != null) {
-                gestorTurnos.eliminarTurno(id);
+        Turno turno = gestorTurnos.getTurnoPorId(id);
+        if (turno != null) {
+            gestorTurnos.getTurnos().remove(id);
+            try {
+                DataLoader.guardarTurnos(gestorTurnos.getTurnos());
                 System.out.println("Turno eliminado correctamente.");
-            } else {
-                System.out.println("Turno no encontrado.");
+            } catch (IOException e) {
+                System.out.println("Error al eliminar el turno: " + e.getMessage());
             }
-        } catch (IOException e) {
-            System.out.println("Error al eliminar el turno: " + e.getMessage());
+        } else {
+            System.out.println("Turno no encontrado.");
         }
-    }
-
-    private static void mostrarListaEmpleados(GestorTurnos gestorTurnos) {
-        Map<Integer, Empleado> empleados = gestorTurnos.getEmpleados();
-        String format = "| %-4s | %-20s | %-15s |%n";
-        System.out.format("+------+----------------------+-----------------+%n");
-        System.out.format("| ID   | Nombre               | Rol             |%n");
-        System.out.format("+------+----------------------+-----------------+%n");
-
-        for (Empleado empleado : empleados.values()) {
-            System.out.format(format, empleado.getId(), empleado.getNombre(), empleado.getRol());
-        }
-
-        System.out.format("+------+----------------------+-----------------+%n");
     }
 }

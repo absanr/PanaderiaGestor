@@ -2,58 +2,16 @@ package com.panaderia.gestor.service;
 
 import com.panaderia.gestor.model.Empleado;
 import com.panaderia.gestor.model.Turno;
+import com.panaderia.gestor.util.LoggerConfig;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class GestorTurnos {
-    private Map<Integer, Turno> turnos;
-    private Map<Integer, Empleado> empleados;
-
-    public GestorTurnos() {
-        turnos = new HashMap<>();
-        empleados = new HashMap<>();
-    }
-
-    public void agregarTurno(Turno turno) throws IOException {
-        turnos.put(turno.getId(), turno);
-        guardarTurnos();
-    }
-
-    public void actualizarTurno(Turno turno) throws IOException {
-        turnos.put(turno.getId(), turno);
-        guardarTurnos();
-    }
-
-    public void eliminarTurno(int id) throws IOException {
-        turnos.remove(id);
-        guardarTurnos();
-    }
-
-    public Turno obtenerTurnoPorId(int id) {
-        return turnos.get(id);
-    }
-
-    public Map<Integer, Turno> obtenerTodosLosTurnos() {
-        return turnos;
-    }
-
-    public Empleado getEmpleadoPorId(int id) {
-        return empleados.get(id);
-    }
-
-    public void cargarTurnos() throws IOException {
-        turnos = DataLoader.cargarTurnos(empleados);
-    }
-
-    public void guardarTurnos() throws IOException {
-        DataLoader.guardarTurnos(turnos);
-    }
-
-    public int generarSiguienteId() throws IOException {
-        return IdGenerator.obtenerSiguienteId("turnos.txt");
-    }
+    private Map<Integer, Empleado> empleados = new HashMap<>();
+    private Map<Integer, Turno> turnos = new HashMap<>();
+    private static final Logger logger = LoggerConfig.getLogger();
 
     public Map<Integer, Empleado> getEmpleados() {
         return empleados;
@@ -63,7 +21,33 @@ public class GestorTurnos {
         this.empleados = empleados;
     }
 
+    public Map<Integer, Turno> getTurnos() {
+        return turnos;
+    }
+
     public void setTurnos(Map<Integer, Turno> turnos) {
         this.turnos = turnos;
+    }
+
+    public Empleado getEmpleadoPorId(int id) {
+        return empleados.get(id);
+    }
+
+    public Turno getTurnoPorId(int id) {
+        return turnos.get(id);
+    }
+
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.put(empleado.getId(), empleado);
+        logger.info("Empleado agregado: " + empleado.getNombre());
+    }
+
+    public void agregarTurno(Turno turno) {
+        turnos.put(turno.getId(), turno);
+        logger.info("Turno agregado para el empleado: " + turno.getEmpleado().getNombre());
+    }
+
+    public Map<Integer, Turno> obtenerTodosLosTurnos() {
+        return turnos;
     }
 }

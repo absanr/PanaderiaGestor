@@ -6,6 +6,7 @@ import com.panaderia.gestor.service.GestorTurnos;
 import com.panaderia.gestor.service.IdGenerator;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
@@ -66,8 +67,16 @@ public class MenuGestionEmpleados {
             System.out.print("Ingrese el sueldo del empleado: ");
             double sueldo = scanner.nextDouble();
             scanner.nextLine(); // Consumir la nueva línea
+            System.out.print("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
+            String fechaNacimiento = scanner.nextLine();
+            System.out.print("Ingrese la fecha de inicio de contrato (yyyy-MM-dd): ");
+            String inicioContrato = scanner.nextLine();
+            System.out.print("Ingrese la fecha de fin de contrato (yyyy-MM-dd): ");
+            String finContrato = scanner.nextLine();
+            System.out.print("Ingrese la fecha de pago (yyyy-MM-dd): ");
+            String fechaPago = scanner.nextLine();
 
-            Empleado empleado = new Empleado(id, nombre, rol, sueldo);
+            Empleado empleado = new Empleado(id, nombre, rol, sueldo, LocalDate.parse(fechaNacimiento), LocalDate.parse(inicioContrato), LocalDate.parse(finContrato), LocalDate.parse(fechaPago));
             gestorTurnos.getEmpleados().put(id, empleado);
             DataLoader.guardarEmpleados(gestorTurnos.getEmpleados());
             System.out.println("Empleado creado correctamente.");
@@ -82,16 +91,16 @@ public class MenuGestionEmpleados {
         System.out.println("--------------------------------------------------------");
 
         Map<Integer, Empleado> empleados = gestorTurnos.getEmpleados();
-        String format = "| %-4s | %-20s | %-15s | %-8s |%n";
-        System.out.format("+------+----------------------+-----------------+----------+%n");
-        System.out.format("| ID   | Nombre               | Rol             | Sueldo   |%n");
-        System.out.format("+------+----------------------+-----------------+----------+%n");
+        String format = "| %-4s | %-20s | %-15s | %-8s | %-10s | %-10s | %-10s | %-10s |%n";
+        System.out.format("+------+----------------------+-----------------+----------+------------+------------+------------+------------+%n");
+        System.out.format("| ID   | Nombre               | Rol             | Sueldo   | Nacimiento | Inicio     | Fin        | Pago       |%n");
+        System.out.format("+------+----------------------+-----------------+----------+------------+------------+------------+------------+%n");
 
         for (Empleado empleado : empleados.values()) {
-            System.out.format(format, empleado.getId(), empleado.getNombre(), empleado.getRol(), empleado.getSueldo());
+            System.out.format(format, empleado.getId(), empleado.getNombre(), empleado.getRol(), empleado.getSueldo(), empleado.getFechaNacimiento(), empleado.getInicioContrato(), empleado.getFinContrato(), empleado.getFechaPago());
         }
 
-        System.out.format("+------+----------------------+-----------------+----------+%n");
+        System.out.format("+------+----------------------+-----------------+----------+------------+------------+------------+------------+%n");
     }
 
     private static void actualizarEmpleado(GestorTurnos gestorTurnos, Scanner scanner) {
@@ -108,10 +117,22 @@ public class MenuGestionEmpleados {
             System.out.print("Ingrese el nuevo sueldo del empleado: ");
             double sueldo = scanner.nextDouble();
             scanner.nextLine(); // Consumir la nueva línea
+            System.out.print("Ingrese la nueva fecha de nacimiento (yyyy-MM-dd): ");
+            String fechaNacimiento = scanner.nextLine();
+            System.out.print("Ingrese la nueva fecha de inicio de contrato (yyyy-MM-dd): ");
+            String inicioContrato = scanner.nextLine();
+            System.out.print("Ingrese la nueva fecha de fin de contrato (yyyy-MM-dd): ");
+            String finContrato = scanner.nextLine();
+            System.out.print("Ingrese la nueva fecha de pago (yyyy-MM-dd): ");
+            String fechaPago = scanner.nextLine();
 
             empleado.setNombre(nombre);
             empleado.setRol(rol);
             empleado.setSueldo(sueldo);
+            empleado.setFechaNacimiento(LocalDate.parse(fechaNacimiento));
+            empleado.setInicioContrato(LocalDate.parse(inicioContrato));
+            empleado.setFinContrato(LocalDate.parse(finContrato));
+            empleado.setFechaPago(LocalDate.parse(fechaPago));
             try {
                 DataLoader.guardarEmpleados(gestorTurnos.getEmpleados());
                 System.out.println("Empleado actualizado correctamente.");

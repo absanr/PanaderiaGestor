@@ -7,12 +7,14 @@ public class Turno {
     private Empleado empleado;
     private LocalDateTime inicio;
     private LocalDateTime fin;
+    private String horario; // "mañana" o "tarde"
 
-    public Turno(int id, Empleado empleado, LocalDateTime inicio, LocalDateTime fin) {
+    public Turno(int id, Empleado empleado, LocalDateTime inicio, LocalDateTime fin, String horario) {
         this.id = id;
         this.empleado = empleado;
         this.inicio = inicio;
         this.fin = fin;
+        this.horario = horario;
     }
 
     public int getId() {
@@ -47,13 +49,22 @@ public class Turno {
         this.fin = fin;
     }
 
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
     @Override
     public String toString() {
         return "Turno{" +
                 "id=" + id +
-                ", empleado=" + empleado +
+                ", empleado=" + empleado.getNombre() +
                 ", inicio=" + inicio +
                 ", fin=" + fin +
+                ", horario='" + horario + '\'' +
                 '}';
     }
 }

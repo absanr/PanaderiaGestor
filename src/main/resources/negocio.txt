@@ -1,0 +1,3 @@
+capitalInicial,50000.0
+gastos,0.0
+ganancias,0.0

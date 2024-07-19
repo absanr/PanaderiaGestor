@@ -1,0 +1,6 @@
+1,Pan Blanco,0.5,0.3,88
+2,Pan Integral,0.7,0.4,78
+3,Pan Dulce,0.9,0.5,55
+4,Pan de Centeno,1.0,0.6,50
+5,Pan de Molde,1.2,0.7,40
+6,Pan Mestizo,1.0,1.0,20

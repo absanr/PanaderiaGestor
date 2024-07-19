@@ -3,7 +3,6 @@ package com.panaderia.gestor.ui;
 import com.panaderia.gestor.service.GestorAsistencia;
 import com.panaderia.gestor.service.GestorTurnos;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuReportes {
@@ -13,7 +12,7 @@ public class MenuReportes {
 
         while (!salir) {
             System.out.println("--------------------------------------------------------");
-            System.out.println("GENERAR REPORTES");
+            System.out.println("MENÚ DE REPORTES");
             System.out.println("--------------------------------------------------------");
             System.out.println("1. Reporte de Asistencia");
             System.out.println("2. Reporte de Turnos");
@@ -26,10 +25,10 @@ public class MenuReportes {
                 scanner.nextLine(); // Consumir la nueva línea
                 switch (opcion) {
                     case 1:
-                        ReporteGenerator.generarReporteAsistencia(gestorAsistencia);
+                        generarReporteAsistencia(gestorAsistencia);
                         break;
                     case 2:
-                        ReporteGenerator.generarReporteTurnos(gestorTurnos);
+                        generarReporteTurnos(gestorTurnos);
                         break;
                     case 0:
                         salir = true;
@@ -37,10 +36,26 @@ public class MenuReportes {
                     default:
                         System.out.println("Opción no válida. Por favor, intente nuevamente.");
                 }
-            } catch (InputMismatchException e) {
+            } catch (Exception e) {
                 System.out.println("Entrada inválida. Por favor, ingrese un número.");
                 scanner.nextLine(); // Limpiar la entrada inválida
             }
         }
+    }
+
+    private static void generarReporteAsistencia(GestorAsistencia gestorAsistencia) {
+        // Aquí puedes añadir la lógica para generar un reporte de asistencia.
+        // Por ejemplo, podrías recorrer la lista de asistencias y mostrar los datos en un formato específico.
+        System.out.println("Generando reporte de asistencia...");
+        // ...
+        System.out.println("Reporte de asistencia generado.");
+    }
+
+    private static void generarReporteTurnos(GestorTurnos gestorTurnos) {
+        // Aquí puedes añadir la lógica para generar un reporte de turnos.
+        // Por ejemplo, podrías recorrer la lista de turnos y mostrar los datos en un formato específico.
+        System.out.println("Generando reporte de turnos...");
+        // ...
+        System.out.println("Reporte de turnos generado.");
     }
 }

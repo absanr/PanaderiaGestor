@@ -3,12 +3,12 @@ package com.panaderia.gestor.model;
 public class Usuario {
     private String username;
     private String password;
-    private String role;
+    private String rol;
 
-    public Usuario(String username, String password, String role) {
+    public Usuario(String username, String password, String rol) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.rol = rol;
     }
 
     public String getUsername() {
@@ -27,20 +27,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
                 "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", rol='" + rol + '\'' +
                 '}';
     }
 }

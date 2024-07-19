@@ -1,4 +1,7 @@
+repostero,repostero123,REPOSTERO
 manager,manager123,MANAGER
-admin,admin123,ADMIN
-employee,employee123,EMPLOYEE
-user,user123,USER
+empleado,empleado123,EMPLEADO
+admin,admin123,ADMINISTRADOR
+limpieza,limpieza123,LIMPIEZA
+user,user123,USUARIO
+cajero,cajero123,CAJERO

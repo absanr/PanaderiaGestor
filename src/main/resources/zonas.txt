@@ -1,4 +1,5 @@
-1,Cocina,Zona donde se preparan los alimentos
-2,Almacén,Zona donde se guardan los ingredientes y productos
-3,Ventas,Zona donde se atiende a los clientes y se venden los productos
-4,Oficina,Zona administrativa donde se realizan las gestiones del negocio
+1,Cocina,Área de preparación y cocción
+2,Ventas,Área de atención al cliente y ventas
+3,Almacén,Área de almacenamiento de productos
+4,Oficina,Área administrativa
+5,Limpieza,Área de equipos de limpieza

@@ -63,9 +63,10 @@ public class MenuGestionZonas {
             String nombre = scanner.nextLine();
             System.out.print("Ingrese la descripción de la zona: ");
             String descripcion = scanner.nextLine();
+
             Zona zona = new Zona(id, nombre, descripcion);
-            gestorZonas.agregarZona(zona);
-            DataLoader.guardarZonas(gestorZonas.obtenerTodasLasZonas());
+            gestorZonas.getZonas().put(id, zona);
+            DataLoader.guardarZonas(gestorZonas.getZonas());
             System.out.println("Zona creada correctamente.");
         } catch (IOException e) {
             System.out.println("Error al crear la zona: " + e.getMessage());
@@ -77,35 +78,35 @@ public class MenuGestionZonas {
         System.out.println("LISTA DE ZONAS");
         System.out.println("--------------------------------------------------------");
 
-        Map<Integer, Zona> zonas = gestorZonas.obtenerTodasLasZonas();
-        String format = "| %-4s | %-20s | %-30s |%n";
-        System.out.format("+------+----------------------+--------------------------------+%n");
-        System.out.format("| ID   | Nombre               | Descripción                    |%n");
-        System.out.format("+------+----------------------+--------------------------------+%n");
+        Map<Integer, Zona> zonas = gestorZonas.getZonas();
+        String format = "| %-4s | %-20s | %-50s |%n";
+        System.out.format("+------+----------------------+----------------------------------------------------+%n");
+        System.out.format("| ID   | Nombre               | Descripción                                        |%n");
+        System.out.format("+------+----------------------+----------------------------------------------------+%n");
 
         for (Zona zona : zonas.values()) {
             System.out.format(format, zona.getId(), zona.getNombre(), zona.getDescripcion());
         }
 
-        System.out.format("+------+----------------------+--------------------------------+%n");
+        System.out.format("+------+----------------------+----------------------------------------------------+%n");
     }
 
     private static void actualizarZona(GestorZonas gestorZonas, Scanner scanner) {
-        verZonas(gestorZonas);
-        System.out.print("Seleccione el ID de la zona a actualizar: ");
+        System.out.print("Ingrese el ID de la zona a actualizar: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
 
-        Zona zona = gestorZonas.obtenerZonaPorId(id);
+        Zona zona = gestorZonas.getZonaPorId(id);
         if (zona != null) {
             System.out.print("Ingrese el nuevo nombre de la zona: ");
             String nombre = scanner.nextLine();
             System.out.print("Ingrese la nueva descripción de la zona: ");
             String descripcion = scanner.nextLine();
+
             zona.setNombre(nombre);
             zona.setDescripcion(descripcion);
             try {
-                DataLoader.guardarZonas(gestorZonas.obtenerTodasLasZonas());
+                DataLoader.guardarZonas(gestorZonas.getZonas());
                 System.out.println("Zona actualizada correctamente.");
             } catch (IOException e) {
                 System.out.println("Error al actualizar la zona: " + e.getMessage());
@@ -116,16 +117,15 @@ public class MenuGestionZonas {
     }
 
     private static void eliminarZona(GestorZonas gestorZonas, Scanner scanner) {
-        verZonas(gestorZonas);
-        System.out.print("Seleccione el ID de la zona a eliminar: ");
+        System.out.print("Ingrese el ID de la zona a eliminar: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
 
-        Zona zona = gestorZonas.obtenerZonaPorId(id);
+        Zona zona = gestorZonas.getZonaPorId(id);
         if (zona != null) {
-            gestorZonas.eliminarZona(id);
+            gestorZonas.getZonas().remove(id);
             try {
-                DataLoader.guardarZonas(gestorZonas.obtenerTodasLasZonas());
+                DataLoader.guardarZonas(gestorZonas.getZonas());
                 System.out.println("Zona eliminada correctamente.");
             } catch (IOException e) {
                 System.out.println("Error al eliminar la zona: " + e.getMessage());
