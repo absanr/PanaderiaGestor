@@ -5,34 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba4ea91f-934e-415e-ad8d-1740366520b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Empleado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Turno.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Zona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorAsistencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorTurnos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorZonas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/IdGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ConfiguracionInicial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionEmpleados.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionZonas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ReporteGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/asistencia.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/empleados.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/turnos.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/usuarios.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/util/LoggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/util/LoggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;absanr&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/absanr/PanaderiaGestor.git&quot;,
+    &quot;accountId&quot;: &quot;b573b362-80dd-45b7-b4ae-a1d56086557e&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -61,21 +49,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MenuPrincipal.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "D:/REPOSITORIO UNI UTP/Taller_de_Programacion/git/proyecto/PanaderiaGestor/src/main/java/com/panaderia/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MenuPrincipal.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Principal&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/REPOSITORIO UNI UTP/Taller_de_Programacion/git/proyecto/PanaderiaGestor&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/REPOSITORIO UNI UTP/Taller_de_Programacion/git/proyecto/PanaderiaGestor/src/main/java/com/panaderia/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\REPOSITORIO UNI UTP\Taller_de_Programacion\git\proyecto\PanaderiaGestor\src\main\resources" />
@@ -92,5 +81,16 @@
       <updated>1721271133108</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
