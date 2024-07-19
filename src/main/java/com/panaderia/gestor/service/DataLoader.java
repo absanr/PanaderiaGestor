@@ -6,11 +6,11 @@ import com.panaderia.gestor.util.LoggerConfig;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalTime;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DataLoader {
 
@@ -102,11 +102,17 @@ public class DataLoader {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] parts = linea.split(",");
-                if (parts.length == 5) {
+                if (parts.length == 6) {
                     int id = Integer.parseInt(parts[0]);
                     Empleado empleado = empleados.get(Integer.parseInt(parts[1]));
                     if (empleado != null) {
-                        Turno turno = new Turno(id, empleado, LocalDateTime.parse(parts[2]), LocalDateTime.parse(parts[3]), parts[4]);
+                        LocalTime horaInicio = LocalTime.parse(parts[2]);
+                        LocalTime horaFin = LocalTime.parse(parts[3]);
+                        Set<Integer> diasLaborables = Stream.of(parts[4].split(";"))
+                                .map(Integer::parseInt)
+                                .collect(Collectors.toSet());
+                        String horario = parts[5];
+                        Turno turno = new Turno(id, empleado, horaInicio, horaFin, diasLaborables, horario);
                         turnos.put(id, turno);
                     }
                 }
@@ -116,15 +122,20 @@ public class DataLoader {
         return turnos;
     }
 
+
     public static void guardarTurnos(Map<Integer, Turno> turnos) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(BASE_PATH + "turnos.txt"))) {
             for (Turno turno : turnos.values()) {
-                bw.write(turno.getId() + "," + turno.getEmpleado().getId() + "," + turno.getInicio() + "," + turno.getFin() + "," + turno.getHorario());
+                String diasLaborables = turno.getDiasLaborables().stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(";"));
+                bw.write(turno.getId() + "," + turno.getEmpleado().getId() + "," + turno.getHoraInicio() + "," + turno.getHoraFin() + "," + diasLaborables + "," + turno.getHorario());
                 bw.newLine();
             }
         }
         logger.info("Turnos guardados.");
     }
+
 
     public static Map<Integer, Map<LocalDate, String>> cargarAsistencia(Map<Integer, Empleado> empleados) throws IOException {
         Map<Integer, Map<LocalDate, String>> asistencia = new HashMap<>();
@@ -245,6 +256,7 @@ public class DataLoader {
         }
         logger.info("Ventas guardadas.");
     }
+
 
     public static boolean configuracionCompleta() {
         return false;

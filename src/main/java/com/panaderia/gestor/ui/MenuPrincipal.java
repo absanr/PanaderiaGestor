@@ -44,17 +44,29 @@ public class MenuPrincipal {
                     scanner.nextLine(); // Consumir la nueva línea
                     switch (opcion) {
                         case 1:
-                            mostrarSubMenuNegocio();
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.USUARIO)) {
+                                mostrarSubMenuNegocio();
+                            } else {
+                                System.out.println("No tiene permisos para acceder a esta sección.");
+                            }
                             break;
                         case 2:
-                            mostrarSubMenuVentas();
+                            if (tieneAcceso(Roles.CAJERO)) {
+                                mostrarSubMenuVentas();
+                            } else {
+                                System.out.println("No tiene permisos para acceder a esta sección.");
+                            }
                             break;
                         case 3:
-                            mostrarSubMenuInventario();
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+                                mostrarSubMenuInventario();
+                            } else {
+                                System.out.println("No tiene permisos para acceder a esta sección.");
+                            }
                             break;
                         case 4:
                             if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
-                                MenuReportes.mostrarMenu(gestorAsistencia, gestorTurnos);
+                                MenuReportes.mostrarMenu(gestorAsistencia, gestorTurnos, gestorVentas);
                             } else {
                                 System.out.println("No tiene permisos para acceder a esta sección.");
                             }
@@ -128,14 +140,18 @@ public class MenuPrincipal {
     }
 
     private static void mostrarFechasDePago() {
-        LocalDate hoy = LocalDate.now();
-        gestorTurnos.getEmpleados().values().forEach(empleado -> {
-            LocalDate proximaFechaPago = hoy.withDayOfMonth(30);  // Asumiendo que el pago es el último día del mes
-            if (hoy.isAfter(proximaFechaPago)) {
-                proximaFechaPago = proximaFechaPago.plusMonths(1);
-            }
-            System.out.println("Próxima fecha de pago para " + empleado.getNombre() + ": " + proximaFechaPago);
-        });
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+            LocalDate hoy = LocalDate.now();
+            gestorTurnos.getEmpleados().values().forEach(empleado -> {
+                LocalDate proximaFechaPago = hoy.withDayOfMonth(30);  // Asumiendo que el pago es el último día del mes
+                if (hoy.isAfter(proximaFechaPago)) {
+                    proximaFechaPago = proximaFechaPago.plusMonths(1);
+                }
+                System.out.println("Próxima fecha de pago para " + empleado.getNombre() + ": " + proximaFechaPago);
+            });
+        } else {
+            System.out.println("No tiene permisos para ver las fechas de pago.");
+        }
     }
 
     private static void mostrarMenuPrincipal() {

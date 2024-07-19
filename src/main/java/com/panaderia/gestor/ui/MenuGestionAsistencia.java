@@ -1,8 +1,7 @@
 package com.panaderia.gestor.ui;
 
-import com.panaderia.gestor.model.Usuario;
-import com.panaderia.gestor.service.GestorAsistencia;
-import com.panaderia.gestor.service.GestorTurnos;
+import com.panaderia.gestor.model.*;
+import com.panaderia.gestor.service.*;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -30,7 +29,7 @@ public class MenuGestionAsistencia {
             scanner.nextLine(); // Consumir la nueva línea
             switch (opcion) {
                 case 1:
-                    registrarAsistencia(gestorAsistencia, scanner);
+                    registrarAsistencia(gestorAsistencia, gestorTurnos, scanner);
                     break;
                 case 2:
                     verAsistencia(gestorAsistencia, gestorTurnos);
@@ -78,16 +77,22 @@ public class MenuGestionAsistencia {
         }
     }
 
-    private static void registrarAsistencia(GestorAsistencia gestorAsistencia, Scanner scanner) {
+    private static void registrarAsistencia(GestorAsistencia gestorAsistencia, GestorTurnos gestorTurnos, Scanner scanner) {
         System.out.print("Ingrese el ID del empleado: ");
         int empleadoId = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
-        System.out.print("Ingrese la fecha de la asistencia (yyyy-MM-dd): ");
-        String fecha = scanner.nextLine();
-        System.out.print("Ingrese el estado (PRESENTE/AUSENTE/TARDE): ");
-        String estado = scanner.nextLine();
 
-        gestorAsistencia.registrarAsistencia(empleadoId, LocalDate.parse(fecha), estado);
+        LocalDate fecha = leerFecha(scanner);
+        System.out.print("Ingrese el estado (PRESENTE/AUSENTE/TARDE): ");
+        String estado = scanner.nextLine().toUpperCase();
+
+        Empleado empleado = gestorTurnos.obtenerEmpleadoPorId(empleadoId);
+        if (empleado == null) {
+            System.out.println("Empleado no encontrado.");
+            return;
+        }
+
+        gestorAsistencia.registrarAsistencia(empleadoId, fecha, estado);
         System.out.println("Asistencia registrada correctamente.");
     }
 
@@ -104,7 +109,9 @@ public class MenuGestionAsistencia {
 
         for (Map.Entry<Integer, Map<LocalDate, String>> entry : asistencia.entrySet()) {
             int empleadoId = entry.getKey();
-            String empleadoNombre = gestorTurnos.getEmpleadoPorId(empleadoId).getNombre();
+            Empleado empleado = gestorTurnos.obtenerEmpleadoPorId(empleadoId);
+            if (empleado == null) continue;
+            String empleadoNombre = empleado.getNombre();
             for (Map.Entry<LocalDate, String> asistenciaEntry : entry.getValue().entrySet()) {
                 System.out.format(format, empleadoId, empleadoNombre, asistenciaEntry.getKey(), asistenciaEntry.getValue());
             }
@@ -118,7 +125,7 @@ public class MenuGestionAsistencia {
         System.out.println("ASISTENCIA DEL EMPLEADO");
         System.out.println("--------------------------------------------------------");
 
-        int empleadoId = usuario.getUsername().hashCode();  // Using username hashcode as ID
+        int empleadoId = usuario.getId();
         Map<LocalDate, String> asistencia = gestorAsistencia.getAsistenciaPorEmpleado(empleadoId);
         String format = "| %-10s | %-10s |%n";
         System.out.format("+------------+------------+%n");
@@ -136,12 +143,12 @@ public class MenuGestionAsistencia {
         System.out.print("Ingrese el ID del empleado: ");
         int empleadoId = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
-        System.out.print("Ingrese la fecha de la asistencia (yyyy-MM-dd): ");
-        String fecha = scanner.nextLine();
-        System.out.print("Ingrese el nuevo estado (PRESENTE/AUSENTE/TARDE): ");
-        String estado = scanner.nextLine();
 
-        gestorAsistencia.actualizarAsistencia(empleadoId, LocalDate.parse(fecha), estado);
+        LocalDate fecha = leerFecha(scanner);
+        System.out.print("Ingrese el nuevo estado (PRESENTE/AUSENTE/TARDE): ");
+        String estado = scanner.nextLine().toUpperCase();
+
+        gestorAsistencia.actualizarAsistencia(empleadoId, fecha, estado);
         System.out.println("Asistencia actualizada correctamente.");
     }
 
@@ -149,10 +156,25 @@ public class MenuGestionAsistencia {
         System.out.print("Ingrese el ID del empleado: ");
         int empleadoId = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
-        System.out.print("Ingrese la fecha de la asistencia (yyyy-MM-dd): ");
-        String fecha = scanner.nextLine();
 
-        gestorAsistencia.eliminarAsistencia(empleadoId, LocalDate.parse(fecha));
+        LocalDate fecha = leerFecha(scanner);
+
+        gestorAsistencia.eliminarAsistencia(empleadoId, fecha);
         System.out.println("Asistencia eliminada correctamente.");
+    }
+
+    private static LocalDate leerFecha(Scanner scanner) {
+        System.out.print("Ingrese la fecha de la asistencia (yyyy-MM-dd) o escriba 'hoy' para la fecha actual: ");
+        String fechaEntrada = scanner.nextLine().trim().toLowerCase();
+        if (fechaEntrada.equals("hoy")) {
+            return LocalDate.now();
+        } else {
+            try {
+                return LocalDate.parse(fechaEntrada);
+            } catch (Exception e) {
+                System.out.println("Formato de fecha inválido. Usando la fecha de hoy.");
+                return LocalDate.now();
+            }
+        }
     }
 }

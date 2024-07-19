@@ -4,11 +4,29 @@ public class Usuario {
     private String username;
     private String password;
     private String rol;
+    private int id;  // Añadir el atributo id
 
     public Usuario(String username, String password, String rol) {
         this.username = username;
         this.password = password;
         this.rol = rol;
+    }
+
+    // Añadir un constructor con id
+    public Usuario(int id, String username, String password, String rol) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+    }
+
+    // Añadir los métodos getter y setter para el id
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {

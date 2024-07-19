@@ -108,7 +108,7 @@ public class MenuGestionEmpleados {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
 
-        Empleado empleado = gestorTurnos.getEmpleadoPorId(id);
+        Empleado empleado = gestorTurnos.obtenerEmpleadoPorId(id);
         if (empleado != null) {
             System.out.print("Ingrese el nuevo nombre del empleado: ");
             String nombre = scanner.nextLine();
@@ -149,7 +149,7 @@ public class MenuGestionEmpleados {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea
 
-        Empleado empleado = gestorTurnos.getEmpleadoPorId(id);
+        Empleado empleado = gestorTurnos.obtenerEmpleadoPorId(id);
         if (empleado != null) {
             gestorTurnos.getEmpleados().remove(id);
             try {

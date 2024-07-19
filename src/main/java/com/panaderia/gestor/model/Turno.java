@@ -1,19 +1,22 @@
 package com.panaderia.gestor.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Set;
 
 public class Turno {
     private int id;
     private Empleado empleado;
-    private LocalDateTime inicio;
-    private LocalDateTime fin;
-    private String horario; // "mañana" o "tarde"
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
+    private Set<Integer> diasLaborables;
+    private String horario;
 
-    public Turno(int id, Empleado empleado, LocalDateTime inicio, LocalDateTime fin, String horario) {
+    public Turno(int id, Empleado empleado, LocalTime horaInicio, LocalTime horaFin, Set<Integer> diasLaborables, String horario) {
         this.id = id;
         this.empleado = empleado;
-        this.inicio = inicio;
-        this.fin = fin;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.diasLaborables = diasLaborables;
         this.horario = horario;
     }
 
@@ -21,32 +24,32 @@ public class Turno {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Empleado getEmpleado() {
         return empleado;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public LocalTime getHoraInicio() {
+        return horaInicio;
     }
 
-    public LocalDateTime getInicio() {
-        return inicio;
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
-    public void setInicio(LocalDateTime inicio) {
-        this.inicio = inicio;
+    public LocalTime getHoraFin() {
+        return horaFin;
     }
 
-    public LocalDateTime getFin() {
-        return fin;
+    public void setHoraFin(LocalTime horaFin) {
+        this.horaFin = horaFin;
     }
 
-    public void setFin(LocalDateTime fin) {
-        this.fin = fin;
+    public Set<Integer> getDiasLaborables() {
+        return diasLaborables;
+    }
+
+    public void setDiasLaborables(Set<Integer> diasLaborables) {
+        this.diasLaborables = diasLaborables;
     }
 
     public String getHorario() {
@@ -55,16 +58,5 @@ public class Turno {
 
     public void setHorario(String horario) {
         this.horario = horario;
-    }
-
-    @Override
-    public String toString() {
-        return "Turno{" +
-                "id=" + id +
-                ", empleado=" + empleado.getNombre() +
-                ", inicio=" + inicio +
-                ", fin=" + fin +
-                ", horario='" + horario + '\'' +
-                '}';
     }
 }

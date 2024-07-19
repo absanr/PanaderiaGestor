@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba4ea91f-934e-415e-ad8d-1740366520b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/EmpleadoPago.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorPagos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPagos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/pagos.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reporte_pagos.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reporte_ventas.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorTurnos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionEmpleados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionEmpleados.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/util/LoggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/util/LoggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/turnos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/turnos.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
