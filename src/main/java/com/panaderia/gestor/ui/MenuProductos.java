@@ -63,16 +63,14 @@ public class MenuProductos {
             String nombre = scanner.nextLine();
             System.out.print("Ingrese el precio de venta del producto: ");
             double precioVenta = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
             System.out.print("Ingrese el costo de producción del producto: ");
             double costoProduccion = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
             System.out.print("Ingrese el stock del producto: ");
             int stock = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea
 
             Producto producto = new Producto(id, nombre, precioVenta, costoProduccion, stock);
-            gestorVentas.getProductos().add(producto);
+            gestorVentas.agregarProducto(producto);
             DataLoader.guardarProductos(gestorVentas.getProductos());
             System.out.println("Producto agregado correctamente.");
         } catch (IOException e) {
@@ -86,16 +84,16 @@ public class MenuProductos {
         System.out.println("--------------------------------------------------------");
 
         List<Producto> productos = gestorVentas.getProductos();
-        String format = "| %-4s | %-20s | %-10s | %-10s | %-10s |%n";
-        System.out.format("+------+----------------------+------------+------------+------------+%n");
-        System.out.format("| ID   | Nombre               | Precio     | Costo      | Stock      |%n");
-        System.out.format("+------+----------------------+------------+------------+------------+%n");
+        String format = "| %-4s | %-20s | %-15s | %-15s | %-10s |%n";
+        System.out.format("+------+----------------------+-----------------+-----------------+------------+%n");
+        System.out.format("| ID   | Nombre               | Precio de Venta | Costo Producción| Stock      |%n");
+        System.out.format("+------+----------------------+-----------------+-----------------+------------+%n");
 
         for (Producto producto : productos) {
             System.out.format(format, producto.getId(), producto.getNombre(), producto.getPrecioVenta(), producto.getCostoProduccion(), producto.getStock());
         }
 
-        System.out.format("+------+----------------------+------------+------------+------------+%n");
+        System.out.format("+------+----------------------+-----------------+-----------------+------------+%n");
     }
 
     private static void actualizarProducto(GestorVentas gestorVentas, Scanner scanner) {
@@ -109,10 +107,8 @@ public class MenuProductos {
             String nombre = scanner.nextLine();
             System.out.print("Ingrese el nuevo precio de venta del producto: ");
             double precioVenta = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
             System.out.print("Ingrese el nuevo costo de producción del producto: ");
             double costoProduccion = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
             System.out.print("Ingrese el nuevo stock del producto: ");
             int stock = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea
@@ -121,6 +117,7 @@ public class MenuProductos {
             producto.setPrecioVenta(precioVenta);
             producto.setCostoProduccion(costoProduccion);
             producto.setStock(stock);
+
             try {
                 DataLoader.guardarProductos(gestorVentas.getProductos());
                 System.out.println("Producto actualizado correctamente.");
@@ -139,7 +136,7 @@ public class MenuProductos {
 
         Producto producto = gestorVentas.getProductoPorId(id);
         if (producto != null) {
-            gestorVentas.getProductos().removeIf(p -> p.getId() == id);
+            gestorVentas.eliminarProducto(id);
             try {
                 DataLoader.guardarProductos(gestorVentas.getProductos());
                 System.out.println("Producto eliminado correctamente.");

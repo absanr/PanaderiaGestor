@@ -5,7 +5,6 @@ import com.panaderia.gestor.model.Venta;
 import com.panaderia.gestor.service.GestorAsistencia;
 import com.panaderia.gestor.service.GestorTurnos;
 import com.panaderia.gestor.service.GestorVentas;
-import com.panaderia.gestor.service.DataLoader;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -28,9 +27,10 @@ public class MenuReportes {
             System.out.println("2. Reporte de Turnos");
             System.out.println("3. Reporte de Pagos");
             System.out.println("4. Reporte de Ventas");
+            System.out.println("5. Generar Reporte de Gastos vs Ganancias");
             System.out.println("0. Volver al Menú Principal");
             System.out.println("--------------------------------------------------------");
-            System.out.print("Ingrese opción [0-4]: ");
+            System.out.print("Ingrese opción [0-5]: ");
 
             try {
                 int opcion = scanner.nextInt();
@@ -47,6 +47,9 @@ public class MenuReportes {
                         break;
                     case 4:
                         generarReporteVentas(gestorVentas);
+                        break;
+                    case 5:
+                        generarReporteGastosVsGanancias(gestorVentas, scanner);
                         break;
                     case 0:
                         salir = true;
@@ -137,5 +140,14 @@ public class MenuReportes {
         } catch (IOException e) {
             System.err.println("Error al guardar el reporte de ventas: " + e.getMessage());
         }
+    }
+
+    private static void generarReporteGastosVsGanancias(GestorVentas gestorVentas, Scanner scanner) {
+        System.out.print("Ingrese la fecha de inicio del reporte (yyyy-MM-dd): ");
+        LocalDate fechaInicio = LocalDate.parse(scanner.nextLine());
+        System.out.print("Ingrese la fecha de fin del reporte (yyyy-MM-dd): ");
+        LocalDate fechaFin = LocalDate.parse(scanner.nextLine());
+
+        gestorVentas.generarReporteGastosVsGanancias(fechaInicio, fechaFin);
     }
 }

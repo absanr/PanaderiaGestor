@@ -24,68 +24,20 @@ public class Empleado {
     }
 
     // Getters y setters
-
-    public int getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public double getSueldo() {
-        return sueldo;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public LocalDate getInicioContrato() {
-        return inicioContrato;
-    }
-
-    public LocalDate getFinContrato() {
-        return finContrato;
-    }
-
-    public LocalDate getFechaPago() {
-        return fechaPago;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public void setInicioContrato(LocalDate inicioContrato) {
-        this.inicioContrato = inicioContrato;
-    }
-
-    public void setFinContrato(LocalDate finContrato) {
-        this.finContrato = finContrato;
-    }
-
-    public void setFechaPago(LocalDate fechaPago) {
-        this.fechaPago = fechaPago;
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getRol() { return rol; }
+    public double getSueldo() { return sueldo; }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+    public LocalDate getInicioContrato() { return inicioContrato; }
+    public LocalDate getFinContrato() { return finContrato; }
+    public LocalDate getFechaPago() { return fechaPago; }
+    public void setId(int id) { this.id = id; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setRol(String rol) { this.rol = rol; }
+    public void setSueldo(double sueldo) { this.sueldo = sueldo; }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    public void setInicioContrato(LocalDate inicioContrato) { this.inicioContrato = inicioContrato; }
+    public void setFinContrato(LocalDate finContrato) { this.finContrato = finContrato; }
+    public void setFechaPago(LocalDate fechaPago) { this.fechaPago = fechaPago; }
 }

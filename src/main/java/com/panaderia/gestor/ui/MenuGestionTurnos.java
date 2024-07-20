@@ -15,9 +15,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MenuGestionTurnos {
-    private static final Scanner scanner = new Scanner(System.in);
-
     public static void mostrarMenu(GestorTurnos gestorTurnos) {
+        Scanner scanner = new Scanner(System.in);
         boolean salir = false;
 
         while (!salir) {
@@ -37,16 +36,16 @@ public class MenuGestionTurnos {
                 scanner.nextLine(); // Consumir la nueva línea
                 switch (opcion) {
                     case 1:
-                        crearTurno(gestorTurnos);
+                        crearTurno(gestorTurnos, scanner);
                         break;
                     case 2:
                         verTurnos(gestorTurnos);
                         break;
                     case 3:
-                        actualizarTurno(gestorTurnos);
+                        actualizarTurno(gestorTurnos, scanner);
                         break;
                     case 4:
-                        eliminarTurno(gestorTurnos);
+                        eliminarTurno(gestorTurnos, scanner);
                         break;
                     case 0:
                         salir = true;
@@ -61,23 +60,32 @@ public class MenuGestionTurnos {
         }
     }
 
-    private static void crearTurno(GestorTurnos gestorTurnos) {
+    private static void crearTurno(GestorTurnos gestorTurnos, Scanner scanner) {
         try {
             int id = IdGenerator.obtenerSiguienteId("turnos.txt");
             System.out.print("Ingrese el ID del empleado: ");
-            int empleadoId = leerNumero();
+            int empleadoId = scanner.nextInt();
+            scanner.nextLine(); // Consumir la nueva línea
             System.out.print("Ingrese la hora de inicio del turno (HH:mm): ");
-            LocalTime horaInicio = leerHora();
+            String inicio = scanner.nextLine();
             System.out.print("Ingrese la hora de fin del turno (HH:mm): ");
-            LocalTime horaFin = leerHora();
-            Set<Integer> diasLaborables = leerDiasLaborables();
-            String horario = leerHorario();
+            String fin = scanner.nextLine();
+            System.out.print("Ingrese los días laborables (1=Lunes, 7=Domingo, separados por ';', ej. 1;2;3): ");
+            String dias = scanner.nextLine();
+            System.out.print("Ingrese el horario (mañana/tarde): ");
+            String horario = scanner.nextLine();
 
-            gestorTurnos.agregarTurno(id, gestorTurnos.obtenerEmpleadoPorId(empleadoId), horaInicio, horaFin, diasLaborables, horario);
+            Set<Integer> diasLaborables = Stream.of(dias.split(";"))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toSet());
+
+            gestorTurnos.agregarTurno(id, gestorTurnos.obtenerEmpleadoPorId(empleadoId), LocalTime.parse(inicio), LocalTime.parse(fin), diasLaborables, horario);
             DataLoader.guardarTurnos(gestorTurnos.getTurnos());
             System.out.println("Turno creado correctamente.");
         } catch (IOException e) {
             System.out.println("Error al crear el turno: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error en la entrada de datos: " + e.getMessage());
         }
     }
 
@@ -102,20 +110,27 @@ public class MenuGestionTurnos {
         System.out.format("+------+----------------------+----------------------+----------------------+------------+------------+%n");
     }
 
-    private static void actualizarTurno(GestorTurnos gestorTurnos) {
+    private static void actualizarTurno(GestorTurnos gestorTurnos, Scanner scanner) {
         System.out.print("Ingrese el ID del turno a actualizar: ");
-        int id = leerNumero();
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consumir la nueva línea
 
         Turno turno = gestorTurnos.obtenerTurnoPorId(id);
         if (turno != null) {
             System.out.print("Ingrese la nueva hora de inicio del turno (HH:mm): ");
-            LocalTime horaInicio = leerHora();
+            String inicio = scanner.nextLine();
             System.out.print("Ingrese la nueva hora de fin del turno (HH:mm): ");
-            LocalTime horaFin = leerHora();
-            Set<Integer> diasLaborables = leerDiasLaborables();
-            String horario = leerHorario();
+            String fin = scanner.nextLine();
+            System.out.print("Ingrese los nuevos días laborables (1=Lunes, 7=Domingo, separados por ';', ej. 1;2;3): ");
+            String dias = scanner.nextLine();
+            System.out.print("Ingrese el nuevo horario (mañana/tarde): ");
+            String horario = scanner.nextLine();
 
-            gestorTurnos.actualizarTurno(id, horaInicio, horaFin, diasLaborables, horario);
+            Set<Integer> diasLaborables = Stream.of(dias.split(";"))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toSet());
+
+            gestorTurnos.actualizarTurno(id, LocalTime.parse(inicio), LocalTime.parse(fin), diasLaborables, horario);
             try {
                 DataLoader.guardarTurnos(gestorTurnos.getTurnos());
                 System.out.println("Turno actualizado correctamente.");
@@ -127,9 +142,10 @@ public class MenuGestionTurnos {
         }
     }
 
-    private static void eliminarTurno(GestorTurnos gestorTurnos) {
+    private static void eliminarTurno(GestorTurnos gestorTurnos, Scanner scanner) {
         System.out.print("Ingrese el ID del turno a eliminar: ");
-        int id = leerNumero();
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consumir la nueva línea
 
         Turno turno = gestorTurnos.obtenerTurnoPorId(id);
         if (turno != null) {
@@ -142,67 +158,6 @@ public class MenuGestionTurnos {
             }
         } else {
             System.out.println("Turno no encontrado.");
-        }
-    }
-
-    private static int leerNumero() {
-        while (true) {
-            try {
-                int numero = scanner.nextInt();
-                scanner.nextLine(); // Consumir la nueva línea
-                return numero;
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, ingrese un número válido.");
-                scanner.nextLine(); // Limpiar la entrada inválida
-            }
-        }
-    }
-
-    private static LocalTime leerHora() {
-        while (true) {
-            try {
-                String hora = scanner.nextLine();
-                return LocalTime.parse(hora);
-            } catch (Exception e) {
-                System.out.println("Entrada inválida. Por favor, ingrese una hora válida (HH:mm).");
-            }
-        }
-    }
-
-    private static Set<Integer> leerDiasLaborables() {
-        while (true) {
-            System.out.print("Seleccione los días laborables: (1) Lunes, (2) Martes, (3) Miércoles, (4) Jueves, (5) Viernes, (6) Sábado, (7) Domingo, (8) Todos: ");
-            String dias = scanner.nextLine();
-            try {
-                if (dias.equals("8")) {
-                    return Stream.of(1, 2, 3, 4, 5, 6, 7).collect(Collectors.toSet());
-                } else {
-                    return Stream.of(dias.split(";"))
-                            .map(Integer::parseInt)
-                            .filter(d -> d >= 1 && d <= 7)
-                            .collect(Collectors.toSet());
-                }
-            } catch (Exception e) {
-                System.out.println("Entrada inválida. Por favor, ingrese los días en el formato correcto.");
-            }
-        }
-    }
-
-    private static String leerHorario() {
-        while (true) {
-            System.out.print("Seleccione el horario: (1) Mañana, (2) Tarde, (3) Otro: ");
-            String horario = scanner.nextLine();
-            switch (horario) {
-                case "1":
-                    return "Maniana";
-                case "2":
-                    return "Tarde";
-                case "3":
-                    System.out.print("Ingrese el nombre del horario: ");
-                    return scanner.nextLine();
-                default:
-                    System.out.println("Entrada inválida. Por favor, ingrese una opción válida.");
-            }
         }
     }
 }

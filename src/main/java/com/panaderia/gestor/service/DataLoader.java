@@ -18,7 +18,7 @@ public class DataLoader {
     private static final Logger logger = LoggerConfig.getLogger();
 
     public static void verificarOCrearArchivos() throws IOException {
-        String[] archivos = {"usuarios.txt", "empleados.txt", "turnos.txt", "asistencia.txt", "zonas.txt", "negocio.txt", "productos.txt", "ventas.txt"};
+        String[] archivos = {"usuarios.txt", "empleados.txt", "turnos.txt", "asistencia.txt", "zonas.txt", "negocio.txt", "productos.txt", "ventas.txt", "pagos.txt"};
         for (String archivo : archivos) {
             File file = new File(BASE_PATH + archivo);
             if (!file.exists()) {
@@ -257,6 +257,34 @@ public class DataLoader {
         logger.info("Ventas guardadas.");
     }
 
+    public static List<EmpleadoPago> cargarPagos() throws IOException {
+        List<EmpleadoPago> pagos = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(BASE_PATH + "pagos.txt"))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] parts = linea.split(",");
+                if (parts.length == 4) {
+                    int empleadoId = Integer.parseInt(parts[0]);
+                    LocalDate fechaPago = LocalDate.parse(parts[1]);
+                    double monto = Double.parseDouble(parts[2]);
+                    String tipoPago = parts[3];
+                    pagos.add(new EmpleadoPago(empleadoId, fechaPago, monto, tipoPago));
+                }
+            }
+        }
+        logger.info("Pagos cargados.");
+        return pagos;
+    }
+
+    public static void guardarPagos(List<EmpleadoPago> pagos) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(BASE_PATH + "pagos.txt"))) {
+            for (EmpleadoPago pago : pagos) {
+                bw.write(pago.getEmpleadoId() + "," + pago.getFechaPago() + "," + pago.getMonto() + "," + pago.getEstado());
+                bw.newLine();
+            }
+        }
+        logger.info("Pagos guardados.");
+    }
 
     public static boolean configuracionCompleta() {
         return false;

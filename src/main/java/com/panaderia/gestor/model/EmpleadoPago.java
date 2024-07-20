@@ -7,12 +7,14 @@ public class EmpleadoPago {
     private LocalDate fechaPago;
     private double monto;
     private String estado;
+    private String tipoPago;
 
-    public EmpleadoPago(int empleadoId, LocalDate fechaPago, double monto, String estado) {
+    public EmpleadoPago(int empleadoId, LocalDate fechaPago, double monto, String tipoPago) {
         this.empleadoId = empleadoId;
         this.fechaPago = fechaPago;
         this.monto = monto;
-        this.estado = estado;
+        this.estado = "PAGADO";
+        this.tipoPago = tipoPago;
     }
 
     // Getters y setters
@@ -47,5 +49,13 @@ public class EmpleadoPago {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
     }
 }

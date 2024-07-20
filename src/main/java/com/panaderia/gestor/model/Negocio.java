@@ -18,30 +18,13 @@ public class Negocio {
         this.ventas = new ArrayList<>();
     }
 
-    public double getCapitalInicial() {
-        return capitalInicial;
-    }
+    public double getCapitalInicial() { return capitalInicial; }
+    public double getGastos() { return gastos; }
+    public double getGanancias() { return ganancias; }
+    public List<Producto> getProductos() { return productos; }
+    public List<Venta> getVentas() { return ventas; }
 
-    public double getGastos() {
-        return gastos;
-    }
-
-    public double getGanancias() {
-        return ganancias;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public List<Venta> getVentas() {
-        return ventas;
-    }
-
-    public void agregarProducto(Producto producto) {
-        this.productos.add(producto);
-    }
-
+    public void agregarProducto(Producto producto) { this.productos.add(producto); }
     public void registrarVenta(Venta venta) {
         this.ventas.add(venta);
         this.ganancias += venta.getTotal();
@@ -51,12 +34,6 @@ public class Negocio {
             }
         }
     }
-
-    public void agregarGasto(double monto) {
-        this.gastos += monto;
-    }
-
-    public double calcularGananciasAnuales() {
-        return capitalInicial + ganancias - gastos;
-    }
+    public void agregarGasto(double monto) { this.gastos += monto; }
+    public double calcularGananciasAnuales() { return capitalInicial + ganancias - gastos; }
 }

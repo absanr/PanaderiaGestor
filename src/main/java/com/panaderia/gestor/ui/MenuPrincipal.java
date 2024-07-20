@@ -44,29 +44,36 @@ public class MenuPrincipal {
                     scanner.nextLine(); // Consumir la nueva línea
                     switch (opcion) {
                         case 1:
-                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.USUARIO)) {
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
                                 mostrarSubMenuNegocio();
                             } else {
                                 System.out.println("No tiene permisos para acceder a esta sección.");
                             }
                             break;
                         case 2:
-                            if (tieneAcceso(Roles.CAJERO)) {
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.CAJERO)) {
                                 mostrarSubMenuVentas();
                             } else {
                                 System.out.println("No tiene permisos para acceder a esta sección.");
                             }
                             break;
                         case 3:
-                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.REPOSTERO)) {
                                 mostrarSubMenuInventario();
                             } else {
                                 System.out.println("No tiene permisos para acceder a esta sección.");
                             }
                             break;
                         case 4:
-                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.CAJERO)) {
                                 MenuReportes.mostrarMenu(gestorAsistencia, gestorTurnos, gestorVentas);
+                            } else {
+                                System.out.println("No tiene permisos para acceder a esta sección.");
+                            }
+                            break;
+                        case 5:
+                            if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+                                mostrarSubMenuCapitalPagos();
                             } else {
                                 System.out.println("No tiene permisos para acceder a esta sección.");
                             }
@@ -104,6 +111,8 @@ public class MenuPrincipal {
         gestorZonas.setZonas(zonas);
         gestorVentas.setProductos(productos);
         gestorVentas.setVentas(ventas);
+        gestorVentas.setEmpleados(empleados); // Asegúrate de cargar los empleados en GestorVentas
+        gestorVentas.cargarDatosNegocio();
     }
 
     private static void guardarDatos() {
@@ -115,6 +124,7 @@ public class MenuPrincipal {
             DataLoader.guardarZonas(gestorZonas.obtenerTodasLasZonas());
             DataLoader.guardarProductos(gestorVentas.getProductos());
             DataLoader.guardarVentas(gestorVentas.getVentas());
+            gestorVentas.guardarDatosNegocio();
         } catch (IOException e) {
             System.err.println("Error al guardar los datos: " + e.getMessage());
         }
@@ -158,19 +168,24 @@ public class MenuPrincipal {
         System.out.println("--------------------------------------------------------");
         System.out.println("MENU PRINCIPAL");
         System.out.println("--------------------------------------------------------");
-        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.USUARIO)) {
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
             System.out.println("1. Negocio");
         }
-        if (tieneAcceso(Roles.CAJERO)) {
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.CAJERO)) {
             System.out.println("2. Ventas");
         }
-        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.REPOSTERO)) {
             System.out.println("3. Inventario");
+        }
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER, Roles.CAJERO)) {
             System.out.println("4. Reportes");
+        }
+        if (tieneAcceso(Roles.ADMINISTRADOR, Roles.MANAGER)) {
+            System.out.println("5. Capital y Pagos");
         }
         System.out.println("0. Salir");
         System.out.println("--------------------------------------------------------");
-        System.out.print("Ingrese opción [0-4]: ");
+        System.out.print("Ingrese opción [0-5]: ");
     }
 
     private static boolean tieneAcceso(String... rolesPermitidos) {
@@ -232,9 +247,11 @@ public class MenuPrincipal {
             System.out.println("--------------------------------------------------------");
             System.out.println("1. Registrar Venta");
             System.out.println("2. Ver Ventas");
+            System.out.println("3. Total de Ventas del Día");
+            System.out.println("4. Total de Ventas de Otro Día");
             System.out.println("0. Volver al Menú Principal");
             System.out.println("--------------------------------------------------------");
-            System.out.print("Ingrese opción [0-2]: ");
+            System.out.print("Ingrese opción [0-4]: ");
             try {
                 int opcion = scanner.nextInt();
                 scanner.nextLine(); // Consumir la nueva línea
@@ -244,6 +261,12 @@ public class MenuPrincipal {
                         break;
                     case 2:
                         MenuVentas.mostrarVentas(gestorVentas);
+                        break;
+                    case 3:
+                        MenuVentas.mostrarTotalVentasDelDia(gestorVentas);
+                        break;
+                    case 4:
+                        MenuVentas.mostrarTotalVentasDeOtroDia(gestorVentas, scanner);
                         break;
                     case 0:
                         salir = true;
@@ -274,6 +297,47 @@ public class MenuPrincipal {
                 switch (opcion) {
                     case 1:
                         MenuProductos.mostrarMenu(gestorVentas);
+                        break;
+                    case 0:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Por favor, intente nuevamente.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                scanner.nextLine(); // Limpiar la entrada inválida
+            }
+        }
+    }
+
+    private static void mostrarSubMenuCapitalPagos() {
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("--------------------------------------------------------");
+            System.out.println("MENÚ DE CAPITAL Y PAGOS");
+            System.out.println("--------------------------------------------------------");
+            System.out.println("1. Ver Capital del Negocio");
+            System.out.println("2. Inyectar Capital");
+            System.out.println("3. Pagar a Empleado");
+            System.out.println("4. Ver Pagos Realizados");
+            System.out.println("0. Volver al Menú Principal");
+            System.out.print("Ingrese opción [0-4]: ");
+            try {
+                int opcion = scanner.nextInt();
+                scanner.nextLine(); // Consumir la nueva línea
+                switch (opcion) {
+                    case 1:
+                        MenuCapital.verCapital(gestorVentas);
+                        break;
+                    case 2:
+                        MenuCapital.inyectarCapital(gestorVentas, scanner);
+                        break;
+                    case 3:
+                        MenuCapital.pagarEmpleado(gestorVentas, scanner);
+                        break;
+                    case 4:
+                        MenuCapital.verPagosRealizados(gestorVentas, scanner);
                         break;
                     case 0:
                         salir = true;
