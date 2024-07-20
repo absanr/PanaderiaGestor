@@ -3,3 +3,4 @@
 3,Almacén,Área de almacenamiento de productos
 4,Oficina,Área administrativa
 5,Limpieza,Área de equipos de limpieza
+6,ZONA PRUEBA,ABC

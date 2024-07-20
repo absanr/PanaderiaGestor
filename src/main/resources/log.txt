@@ -1826,3 +1826,83 @@ jul 20, 2024 2:06:44 P. M. com.panaderia.gestor.service.DataLoader guardarProdu
 INFO: Productos guardados.
 jul 20, 2024 2:06:44 P. M. com.panaderia.gestor.service.DataLoader guardarVentas
 INFO: Ventas guardadas.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarUsuarios
+INFO: Usuarios cargados.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarEmpleados
+INFO: Empleados cargados.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarTurnos
+INFO: Turnos cargados.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarAsistencia
+INFO: Asistencias cargadas.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarZonas
+INFO: Zonas cargadas.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarProductos
+INFO: Productos cargados.
+jul 20, 2024 2:08:28 P. M. com.panaderia.gestor.service.DataLoader cargarVentas
+INFO: Ventas cargadas.
+jul 20, 2024 2:08:34 P. M. com.panaderia.gestor.service.AuthService login
+WARNING: Falló la autenticación para el usuario: ADMIN
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarUsuarios
+INFO: Usuarios cargados.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarEmpleados
+INFO: Empleados cargados.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarTurnos
+INFO: Turnos cargados.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarAsistencia
+INFO: Asistencias cargadas.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarZonas
+INFO: Zonas cargadas.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarProductos
+INFO: Productos cargados.
+jul 20, 2024 2:08:37 P. M. com.panaderia.gestor.service.DataLoader cargarVentas
+INFO: Ventas cargadas.
+jul 20, 2024 2:08:41 P. M. com.panaderia.gestor.service.AuthService login
+INFO: Usuario autenticado: admin
+jul 20, 2024 2:09:56 P. M. com.panaderia.gestor.service.DataLoader guardarZonas
+INFO: Zonas guardadas.
+jul 20, 2024 2:10:36 P. M. com.panaderia.gestor.service.GestorAsistencia registrarAsistencia
+INFO: Asistencia registrada para el empleado ID: 1 en fecha: 2024-07-19
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarUsuarios
+INFO: Usuarios guardados.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarEmpleados
+INFO: Empleados guardados.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarTurnos
+INFO: Turnos guardados.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarAsistencia
+INFO: Asistencias guardadas.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarZonas
+INFO: Zonas guardadas.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarProductos
+INFO: Productos guardados.
+jul 20, 2024 2:11:08 P. M. com.panaderia.gestor.service.DataLoader guardarVentas
+INFO: Ventas guardadas.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarUsuarios
+INFO: Usuarios cargados.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarEmpleados
+INFO: Empleados cargados.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarTurnos
+INFO: Turnos cargados.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarAsistencia
+INFO: Asistencias cargadas.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarZonas
+INFO: Zonas cargadas.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarProductos
+INFO: Productos cargados.
+jul 20, 2024 2:11:25 P. M. com.panaderia.gestor.service.DataLoader cargarVentas
+INFO: Ventas cargadas.
+jul 20, 2024 2:11:31 P. M. com.panaderia.gestor.service.AuthService login
+INFO: Usuario autenticado: admin
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarUsuarios
+INFO: Usuarios cargados.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarEmpleados
+INFO: Empleados cargados.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarTurnos
+INFO: Turnos cargados.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarAsistencia
+INFO: Asistencias cargadas.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarZonas
+INFO: Zonas cargadas.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarProductos
+INFO: Productos cargados.
+jul 20, 2024 2:13:23 P. M. com.panaderia.gestor.service.DataLoader cargarVentas
+INFO: Ventas cargadas.

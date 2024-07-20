@@ -5,28 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba4ea91f-934e-415e-ad8d-1740366520b6" name="Changes" comment="Se agrego Reporte ventas, pagos, se actualizo model de turno y asistencia">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuCapital.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/EmpleadoPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/EmpleadoPago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Negocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Negocio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/model/Venta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorPagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorPagos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/service/GestorVentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ConfiguracionInicial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/ConfiguracionInicial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionAsistencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuGestionTurnos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuProductos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuProductos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuReportes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuVentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/panaderia/gestor/ui/MenuVentas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/asistencia.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/asistencia.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/negocio.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/negocio.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pagos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pagos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/productos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/productos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/reporte_ventas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reporte_ventas.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ventas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventas.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zonas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zonas.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
